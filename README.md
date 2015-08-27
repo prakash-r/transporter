@@ -20,3 +20,10 @@ This is plugin is compatible for eclipse v3.5 or greater and under OS X platform
   - Transport live to app (Live mode new) 
 
 Thats all, now your workspace and product will be in sync
+
+#Reference
+- http://wiki.eclipse.org/PDE/User_Guide.
+- http://www.vogella.com/tutorials/EclipsePlugIn/article.html.
+- https://eclipse.org/articles/Article-Resource-deltas/resource-deltas.html.
+- https://eclipse.org/articles/Article-PDE-does-plugins/PDE-intro.html.
+- http://www.eclipse.org/articles/Article-Mutatis-mutandis/overlay-pages.html.
