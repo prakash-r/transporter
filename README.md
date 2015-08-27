@@ -5,7 +5,7 @@ This is the beta version which works under normal scenario, with very basic use 
 
 #Installation
 
-1. Download plugin jar from [here](#default_modal)
+1. Download plugin jar from [here](https://github.com/prakash-r/transporter/raw/master/build/Transporter_1.0.0.201508271746.jar)
 2. Copy the downloaded jar to eclipse plugins folder
 3. Restart eclipse
 4. Right click on project from Project Explorer and select Properties
