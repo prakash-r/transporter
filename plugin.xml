@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.propertyPages">
+      <page
+      		adaptable="true"
+            objectClass="org.eclipse.core.resources.IProject"
+            nameFilter="*"
+            class="com.transporter.properties.TransporterPropertyPage"
+            id="transporter.properties.samplePropertyPage"
+            name="Transporter Preference">
+      </page>
+   </extension>
+   <extension
+         point="org.eclipse.ui.startup">
+      <startup
+            class="com.transporter.startup.StartupImpl">
+      </startup>
+   </extension>
+
+</plugin>
