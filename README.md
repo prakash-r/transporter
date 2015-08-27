@@ -4,7 +4,7 @@ Creator asynchronous file tansporter, an eclipse plugin assist to developer for 
 This is the beta version which works under normal scenario, with very basic use cases. 
 
 ##Note
-This is plugin developed for greater version of eclipse v3.5 and under OS X platform
+This is plugin is compatible for eclipse v3.5 or greater and under OS X platform
 
 #Installation
 
