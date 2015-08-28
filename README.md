@@ -12,7 +12,9 @@ This is plugin is compatible for eclipse v3.5 or greater and under OS X platform
 2. Copy the downloaded jar to eclipse plugins folder
 3. Restart eclipse
 4. Right click on project from Project Explorer and select Properties
+![screen shot 2015-08-27 at 7 15 02 pm](https://cloud.githubusercontent.com/assets/11437890/9543623/d646f27e-4d97-11e5-947c-56f8ccd79851.png)
 5. Choose Tranporter Preference from left pane
+![screen shot 2015-08-27 at 7 15 16 pm](https://cloud.githubusercontent.com/assets/11437890/9543624/d673036e-4d97-11e5-8337-a3fef5647238.png)
 6. Select Build webapps folder Ex : /Users/prakash/Build/Adv/Sas/webapps
 7. Enable/Disable the following context
   - Transport appcreator to ROOT (Live mode old)
