@@ -21,15 +21,16 @@ public class TransporterPropertyPage extends FileEditorWrapper
 		
 		noDefaultAndApplyButton();
 		
-		DirectoryFieldEditor prodPath = new DirectoryFieldEditor(PropertyStore.PRODUCT_PATH, "&Build webapps folder:",
+		
+		addField(new BooleanFieldEditor(PropertyStore.ISPLUGINENABLE,
+		        "&Enable Transporter", getFieldEditorParent()));
+		DirectoryFieldEditor builderPath = new DirectoryFieldEditor(PropertyStore.PRODUCT_BUILDER, "&AdventNetBuilder webapps folder:",
 		        getFieldEditorParent());
-		addField(prodPath);
-	    addField(new BooleanFieldEditor(PropertyStore.ISROOTENABLE,
-		        "&Transport appcreator", getFieldEditorParent()));
-	    addField(new BooleanFieldEditor(PropertyStore.ISAPPBUILDERENABLE,
-		        "&Transport zohocreator", getFieldEditorParent()));
-	    addField(new BooleanFieldEditor(PropertyStore.ISAPPENABLE,
-		        "&Transport live", getFieldEditorParent()));
+		addField(builderPath);
+		
+		DirectoryFieldEditor livePath = new DirectoryFieldEditor(PropertyStore.PRODUCT_LIVE, "&AdventNetLive webapps folder:",
+		        getFieldEditorParent());
+		addField(livePath);
 
 	}
 

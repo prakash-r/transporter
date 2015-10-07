@@ -33,9 +33,8 @@ public class Transport implements IResourceChangeListener
 	
 	public Transport() {
 		
-		mappings.add(new ProductMapping("appcreator","ROOT", PropertyStore.ISROOTENABLE));
-		mappings.add(new ProductMapping("zohocreator","appbuilder",PropertyStore.ISAPPBUILDERENABLE));
-		mappings.add(new ProductMapping("live","app", PropertyStore.ISAPPENABLE));
+		mappings.add(new ProductMapping("appcreator",ProductMapping.PRODUCT_LIVE));
+		mappings.add(new ProductMapping("zohocreator",ProductMapping.PRODUCT_BUILDER));
 	}
 	
 	public static ProductMapping getMapping(String source){
@@ -45,8 +44,7 @@ public class Transport implements IResourceChangeListener
 				return mapping;
 			}
 		}
-		ProductMapping dummyMap = new ProductMapping(null, null, null);
-		dummyMap.markEnable(false);
+		ProductMapping dummyMap = new ProductMapping(null, 0);
 		return dummyMap;
 	}
 	
@@ -90,14 +88,17 @@ class TransportVisitor implements IResourceDeltaVisitor
         }
         String contextName = resource.getProjectRelativePath().segment(2);
         ProductMapping mapping = Transport.getMapping(contextName);
-        if(!mapping.isEnabled(resource.getProject())){
+        String productPath = mapping.getDestination(resource.getProject());
+        if(productPath == null){
         	return true;
         }
         if (resource.getType() == IResource.FILE) {
-        	if(getProductPath(resource.getProject()) == null){
+        	
+        	if(!isPluginEnabled(resource.getProject())){
         		return true;
         	}
-        	IPath target = new Path(getProductPath(resource.getProject())).append(mapping.getDestination());
+        	
+        	IPath target = new Path(mapping.getDestination(resource.getProject())).append("ROOT");
         	IPath rawPath = resource.getRawLocation();
         	IPathVariableManager pathManager = workspace.getPathVariableManager();
         	rawPath = pathManager.resolvePath(rawPath);
@@ -121,8 +122,9 @@ class TransportVisitor implements IResourceDeltaVisitor
         return true;
 	}
 	
-	private String getProductPath(IProject project) throws CoreException{
-		return project.getPersistentProperty(new QualifiedName("TransporterPropPage", PropertyStore.PRODUCT_PATH));
+	private Boolean isPluginEnabled(IProject project) throws CoreException{
+		String isEnable = project.getPersistentProperty(new QualifiedName("TransporterPropPage", PropertyStore.ISPLUGINENABLE));
+		return Boolean.parseBoolean(isEnable);
 	}
 	
 	private boolean copy(File source, File destination){

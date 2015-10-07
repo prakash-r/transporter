@@ -6,32 +6,35 @@ import org.eclipse.core.runtime.QualifiedName;
 
 public class ProductMapping {
 	
+	public static final int PRODUCT_BUILDER = 1;
+	public static final int PRODUCT_LIVE = 2;
+	
 	private String source;
-	private String dest;
-	private String propKey;
-	private boolean isEnabled = true; 
-	public ProductMapping(String source, String dest, String propKey) {
+	private int	dest;
+	public ProductMapping(String source, int dest) {
 		this.source = source;
 		this.dest = dest;
-		this.propKey = propKey;
 	}
 	
 	public String getSource(){
 		return source;
 	}
 	
-	public String getDestination(){
-		return dest;
-	}
-	public void markEnable(boolean isEnabled){
-		this.isEnabled = isEnabled;
-	}
-	public boolean isEnabled(IProject project) throws CoreException{
-		if(!isEnabled){
-			return false;
+	public String getDestination(IProject project) throws CoreException{
+		String propKey = getPropKey();
+		if(propKey != null){
+			String propVal = project.getPersistentProperty(new QualifiedName("TransporterPropPage", propKey));
+			return propVal;
 		}
-		String propVal = project.getPersistentProperty(new QualifiedName("TransporterPropPage", propKey));
-		return Boolean.parseBoolean(propVal);
+		return null;
 	}
-	
+	private String getPropKey(){
+		switch (dest) {
+		case PRODUCT_BUILDER:
+			return PropertyStore.PRODUCT_BUILDER;
+		case PRODUCT_LIVE:
+			return PropertyStore.PRODUCT_LIVE;
+		}
+		return null;
+	}
 }

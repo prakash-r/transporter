@@ -13,9 +13,12 @@ public class PropertyStore extends PreferenceStore {
 	
 	
 	public static final String PRODUCT_PATH = "productPath";
+	public static final String PRODUCT_BUILDER = "productBuilder";
+	public static final String PRODUCT_LIVE = "productLive";
 	public static final String ISAPPENABLE = "isAppEnable";
 	public static final String ISROOTENABLE = "isRootEnable";
 	public static final String ISAPPBUILDERENABLE = "isAppbuildeEnable";
+	public static final String ISPLUGINENABLE = "isPluginEnable";
 	
 	
 	private IResource resource;
